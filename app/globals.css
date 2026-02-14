@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-900 text-champagne-50;
+    background: linear-gradient(135deg, #102a43 0%, #243b53 50%, #102a43 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-champagne-300 via-champagne-400 to-champagne-300 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-emerald {
+    @apply bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-300 bg-clip-text text-transparent;
+  }
+  
+  .glow-border {
+    @apply relative;
+  }
+  
+  .glow-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg;
+    background: linear-gradient(135deg, rgba(236, 168, 67, 0.3), rgba(236, 168, 67, 0.1));
+    filter: blur(10px);
+    z-index: -1;
+  }
+  
+  .paper-texture {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  .elegant-shadow {
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba(236, 168, 67, 0.1);
+  }
+  
+  .luxury-shadow {
+    box-shadow: 
+      0 30px 80px rgba(0, 0, 0, 0.4),
+      0 0 60px rgba(236, 168, 67, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
