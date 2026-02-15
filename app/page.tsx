@@ -43,6 +43,7 @@ export default function Home() {
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
             backgroundRepeat: "no-repeat",
+            filter: "blur(5px)",
           }}
         >
           <div className="absolute inset-0 bg-navy-900/75" />
