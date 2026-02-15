@@ -17,7 +17,7 @@ export const WeddingDetails = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen py-32 px-6 bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900"
+      className="relative min-h-screen py-32 px-6 bg-transparent"
     >
       <div className="absolute inset-0 paper-texture opacity-5" />
       

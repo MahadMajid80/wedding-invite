@@ -34,6 +34,21 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-x-hidden relative">
+      {hasOpenedInvitation && (
+        <div 
+          className="fixed inset-0 z-0"
+          style={{
+            backgroundImage: "url('/Remove_the_rest_202602151607.jpeg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="absolute inset-0 bg-navy-900/75" />
+        </div>
+      )}
+      
       <div className="fixed top-8 right-8 z-40">
         <LanguageSelector />
       </div>
@@ -41,13 +56,13 @@ export default function Home() {
       {!hasOpenedInvitation ? (
         <CinematicOpening onOpenInvitation={() => setHasOpenedInvitation(true)} />
       ) : (
-        <>
+        <div className="relative z-10">
           <CoupleStory />
           <WeddingDetails />
           <GallerySection />
           <PersonalMessage />
           <GrandClosing />
-        </>
+        </div>
       )}
     </main>
   );

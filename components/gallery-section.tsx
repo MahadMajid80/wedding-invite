@@ -4,32 +4,33 @@ import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const galleryImages = [
   {
     id: 1,
-    src: "/images/gallery-1.jpg",
-    alt: "Pre-wedding moment",
+    src: "/Remove_the_rest_202602151607.jpeg",
+    alt: "Desi couple pre-wedding moment",
     caption: "Our first photo together",
   },
   {
     id: 2,
-    src: "/images/gallery-2.jpg",
-    alt: "Pre-wedding moment",
+    src: "/Create_image_of_202602151547.jpeg",
+    alt: "Desi couple engagement",
     caption: "Sunset engagement",
   },
   {
     id: 3,
-    src: "/images/gallery-3.jpg",
-    alt: "Pre-wedding moment",
+    src: "/Create_a_image_202602151544.jpeg",
+    alt: "Desi couple celebrating",
     caption: "Celebrating love",
   },
   {
     id: 4,
-    src: "/images/gallery-4.jpg",
-    alt: "Pre-wedding moment",
-    caption: "Forever begins",
+    src: "/Create_some_dancing_202602151614.jpeg",
+    alt: "Desi couple dancing",
+    caption: "Dancing together",
   },
 ];
 
@@ -46,7 +47,7 @@ export const GallerySection = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen py-32 px-6 bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900"
+      className="relative min-h-screen py-32 px-6 bg-transparent"
     >
       <div className="absolute inset-0 paper-texture opacity-5" />
       
@@ -73,11 +74,17 @@ export const GallerySection = () => {
               onClick={() => setSelectedImage(index)}
               className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group luxury-shadow border border-champagne-500/20"
             >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-champagne-100 opacity-0 group-hover:opacity-100 transition-opacity z-20">
                 <p className="font-serif text-sm">{image.caption}</p>
               </div>
-              <div className="w-full h-full bg-gradient-to-br from-champagne-500/20 via-emerald-500/20 to-blush-500/20" />
             </motion.div>
           ))}
         </div>
@@ -165,7 +172,13 @@ const Lightbox = ({ images, initialIndex, onClose }: LightboxProps) => {
         </button>
 
         <div className="relative aspect-video rounded-xl overflow-hidden luxury-shadow">
-          <div className="w-full h-full bg-gradient-to-br from-champagne-500/20 via-emerald-500/20 to-blush-500/20" />
+          <Image
+            src={images[currentIndex].src}
+            alt={images[currentIndex].alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 80vw"
+          />
           <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-navy-900/90 to-transparent">
             <p className="font-serif text-xl text-champagne-100">
               {images[currentIndex].caption}

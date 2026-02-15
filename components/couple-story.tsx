@@ -3,34 +3,33 @@
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import Image from "next/image";
 import { WEDDING_CONFIG } from "@/lib/constants";
 
 const storyChapters = [
   {
-    title: "The First Chapter",
+    title: "Baat pakki",
     text: "Our story began with a simple hello...",
     emoji: "✨",
+    image: "/Remove_the_rest_202602151607.jpeg",
   },
   {
-    title: "Falling in Love",
+    title: "Engagement",
     text: "What started as a conversation became forever.",
     emoji: "💕",
-  },
-  {
-    title: "The Proposal",
-    text: "With a promise of always...",
-    emoji: "💍",
+    image: "/Create_image_of_202602151547.jpeg",
   },
   {
     title: "The Wedding Day",
     text: "And now, we invite you to witness our forever.",
     emoji: "👰‍♀️🤵",
+    image: "/Create_a_image_202602151544.jpeg",
   },
 ];
 
 export const CoupleStory = () => {
   return (
-    <section className="relative min-h-screen py-32 px-6 bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900">
+    <section className="relative min-h-screen py-32 px-6 bg-transparent">
       <div className="absolute inset-0 paper-texture opacity-5" />
       
       <div className="max-w-6xl mx-auto">
@@ -86,17 +85,14 @@ const StoryChapter = ({ chapter, index, isEven }: StoryChapterProps) => {
     >
       <div className="flex-1 relative">
         <div className="relative h-96 rounded-2xl overflow-hidden luxury-shadow">
-          <div className="absolute inset-0 bg-gradient-to-br from-champagne-500/20 via-emerald-500/20 to-blush-500/20 blur-2xl" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-navy-900/40" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="text-8xl opacity-30"
-            >
-              {chapter.emoji}
-            </motion.div>
-          </div>
+          <Image
+            src={chapter.image}
+            alt={chapter.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
         </div>
         
         {inView && (
@@ -104,7 +100,7 @@ const StoryChapter = ({ chapter, index, isEven }: StoryChapterProps) => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.5, type: "spring" }}
-            className="absolute -top-4 -right-4"
+            className="absolute -top-4 -right-4 z-10"
           >
             <Sparkles className="w-8 h-8 text-champagne-400 animate-sparkle" />
           </motion.div>
