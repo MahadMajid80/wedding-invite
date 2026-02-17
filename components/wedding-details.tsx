@@ -10,25 +10,25 @@ import { VenueMap } from "./venue-map";
 
 export const WeddingDetails = () => {
   const { ref, inView } = useInView({
-    threshold: 0.2,
+    threshold: 0.1,
     triggerOnce: true,
   });
 
   return (
     <section
       ref={ref}
-      className="relative min-h-screen py-32 px-6 bg-transparent"
+      className="relative min-h-screen py-16 md:py-32 px-4 md:px-6 bg-transparent"
     >
       <div className="absolute inset-0 paper-texture opacity-5" />
       
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
-          <h2 className="font-serif text-5xl md:text-6xl text-gradient mb-4">
+          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-gradient mb-4">
             Wedding Details
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-champagne-500 to-transparent mx-auto" />
@@ -36,9 +36,9 @@ export const WeddingDetails = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="mb-16"
+          className="mb-12 md:mb-16"
         >
           <CountdownTimer targetDate={WEDDING_CONFIG.weddingDate} />
         </motion.div>
@@ -47,7 +47,7 @@ export const WeddingDetails = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="bg-navy-800/50 backdrop-blur-sm rounded-2xl p-8 luxury-shadow border border-champagne-500/20 mb-12"
+          className="bg-navy-800/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 luxury-shadow border border-champagne-500/20 mb-8 md:mb-12"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 rounded-full bg-blush-500/20">
@@ -60,7 +60,7 @@ export const WeddingDetails = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-24">
+        <div className="space-y-16 md:space-y-24">
           {WEDDING_CONFIG.events.map((event, index) => (
             <EventSection
               key={index}
@@ -96,7 +96,7 @@ interface EventSectionProps {
 
 const EventSection = ({ event, index, inView }: EventSectionProps) => {
   const { ref } = useInView({
-    threshold: 0.2,
+    threshold: 0.1,
     triggerOnce: true,
   });
 
@@ -140,14 +140,14 @@ const EventSection = ({ event, index, inView }: EventSectionProps) => {
       </div>
 
       <div
-        className={`bg-navy-800/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 luxury-shadow border-2 ${colors.border}`}
+        className={`bg-navy-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 lg:p-12 luxury-shadow border-2 ${colors.border}`}
       >
         <div className="text-center mb-8">
           <motion.h3
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.8 + index * 0.2, duration: 0.6 }}
-            className="font-calligraphy text-4xl md:text-5xl text-gradient mb-4"
+            className="font-calligraphy text-3xl md:text-4xl lg:text-5xl text-gradient mb-4"
           >
             {event.name}
           </motion.h3>
