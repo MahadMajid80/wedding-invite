@@ -29,7 +29,7 @@ const storyChapters = [
 
 export const CoupleStory = () => {
   return (
-    <section className="relative min-h-screen py-32 px-6 bg-transparent">
+    <section className="relative min-h-screen py-16 md:py-32 px-4 md:px-6 bg-transparent">
       <div className="absolute inset-0 paper-texture opacity-5" />
       
       <div className="max-w-6xl mx-auto">
@@ -38,15 +38,15 @@ export const CoupleStory = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
-          <h2 className="font-serif text-5xl md:text-6xl text-gradient mb-4">
+          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-gradient mb-4">
             Our Story
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-champagne-500 to-transparent mx-auto" />
         </motion.div>
 
-        <div className="space-y-32">
+        <div className="space-y-16 md:space-y-32">
           {storyChapters.map((chapter, index) => (
             <StoryChapter
               key={index}
@@ -69,7 +69,7 @@ interface StoryChapterProps {
 
 const StoryChapter = ({ chapter, index, isEven }: StoryChapterProps) => {
   const { ref, inView } = useInView({
-    threshold: 0.3,
+    threshold: 0.1,
     triggerOnce: true,
   });
 
@@ -77,20 +77,21 @@ const StoryChapter = ({ chapter, index, isEven }: StoryChapterProps) => {
     <motion.div
       ref={ref}
       initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
+      animate={inView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
-      className={`flex flex-col md:flex-row items-center gap-12 ${
+      className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 ${
         isEven ? "md:flex-row-reverse" : ""
       }`}
     >
-      <div className="flex-1 relative">
-        <div className="relative h-96 rounded-2xl overflow-hidden luxury-shadow">
+      <div className="flex-1 relative w-full">
+        <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden luxury-shadow">
           <Image
             src={chapter.image}
             alt={chapter.title}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
+            priority={index === 0}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
         </div>
@@ -110,17 +111,17 @@ const StoryChapter = ({ chapter, index, isEven }: StoryChapterProps) => {
       <div className="flex-1 text-center md:text-left">
         <motion.h3
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          animate={inView ? { opacity: 1 } : { opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="font-serif text-3xl md:text-4xl text-champagne-300 mb-4"
+          className="font-serif text-2xl md:text-3xl lg:text-4xl text-champagne-300 mb-4"
         >
           {chapter.title}
         </motion.h3>
         <motion.p
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          animate={inView ? { opacity: 1 } : { opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="font-serif text-xl md:text-2xl text-champagne-200/80 leading-relaxed"
+          className="font-serif text-lg md:text-xl lg:text-2xl text-champagne-200/80 leading-relaxed"
         >
           {chapter.text}
         </motion.p>
