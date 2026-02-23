@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock, Users, Sparkles } from "lucide-react";
 import { WEDDING_CONFIG } from "@/lib/constants";
 import { format } from "date-fns";
-import { CountdownTimer } from "./countdown-timer";
 import { VenueMap } from "./venue-map";
 
 export const WeddingDetails = () => {
@@ -36,18 +35,9 @@ export const WeddingDetails = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="mb-12 md:mb-16"
-        >
-          <CountdownTimer targetDate={WEDDING_CONFIG.weddingDate} />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="bg-navy-800/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 luxury-shadow border border-champagne-500/20 mb-8 md:mb-12"
+          className="bg-navy-800/85 backdrop-blur-sm rounded-2xl p-6 md:p-8 luxury-shadow border border-champagne-500/20 mb-8 md:mb-12"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 rounded-full bg-blush-500/20">
@@ -140,7 +130,7 @@ const EventSection = ({ event, index, inView }: EventSectionProps) => {
       </div>
 
       <div
-        className={`bg-navy-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 lg:p-12 luxury-shadow border-2 ${colors.border}`}
+        className={`bg-navy-800/85 backdrop-blur-sm rounded-3xl p-6 md:p-8 lg:p-12 luxury-shadow border-2 ${colors.border}`}
       >
         <div className="text-center mb-8">
           <motion.h3
@@ -166,7 +156,7 @@ const EventSection = ({ event, index, inView }: EventSectionProps) => {
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 1.2 + index * 0.2, duration: 0.6 }}
-            className="bg-navy-900/50 rounded-xl p-6 border border-champagne-500/10"
+            className="bg-navy-900/80 rounded-xl p-6 border border-champagne-500/10"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className={`p-3 rounded-full ${colors.bg}`}>
@@ -183,7 +173,7 @@ const EventSection = ({ event, index, inView }: EventSectionProps) => {
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 1.2 + index * 0.2, duration: 0.6 }}
-            className="bg-navy-900/50 rounded-xl p-6 border border-champagne-500/10"
+            className="bg-navy-900/80 rounded-xl p-6 border border-champagne-500/10"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className={`p-3 rounded-full ${colors.bg}`}>
