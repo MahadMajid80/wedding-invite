@@ -21,7 +21,7 @@ export default function Home() {
   const hasPlayedRef = useRef(false);
 
   useEffect(() => {
-    audioRef.current = new Audio("/liosound_Cinematic_main.mp3");
+    audioRef.current = new Audio("/wedding-music.mp3");
     audioRef.current.loop = true;
     audioRef.current.volume = 0.5;
     audioRef.current.muted = true; // Start muted
@@ -66,7 +66,9 @@ export default function Home() {
   }, []);
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return (
+      <LoadingScreen onFirstInteraction={startMusicIfNeeded} />
+    );
   }
 
   if (showPasswordProtection && !isUnlocked) {
@@ -74,7 +76,10 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden relative">
+    <main
+      className="min-h-screen overflow-x-hidden relative"
+      onClickCapture={startMusicIfNeeded}
+    >
       {/* Music control button - persistent throughout */}
       <button
         onClick={handleMusicToggle}

@@ -3,9 +3,20 @@
 import { motion } from "framer-motion";
 import { WEDDING_CONFIG } from "@/lib/constants";
 
-export const LoadingScreen = () => {
+interface LoadingScreenProps {
+  onFirstInteraction?: () => void;
+}
+
+export const LoadingScreen = ({ onFirstInteraction }: LoadingScreenProps) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={onFirstInteraction}
+      onKeyDown={(e) => e.key === "Enter" && onFirstInteraction?.()}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 cursor-pointer"
+      aria-label="Tap to continue"
+    >
       <div className="text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
