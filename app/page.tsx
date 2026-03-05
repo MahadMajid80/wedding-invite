@@ -1,9 +1,6 @@
 "use client";
 
 import { CinematicOpening } from "@/components/cinematic-opening";
-import { CoupleStory } from "@/components/couple-story";
-import { WeddingDetails } from "@/components/wedding-details";
-import { GallerySection } from "@/components/gallery-section";
 import { PersonalMessage } from "@/components/personal-message";
 import { GrandClosing } from "@/components/grand-closing";
 import { LoadingScreen } from "@/components/loading-screen";
@@ -63,7 +60,13 @@ export default function Home() {
 
     const handleDragStart = (event: DragEvent) => {
       const target = event.target as HTMLElement | null;
-      if (target && (target.tagName === "IMG" || target.tagName === "PICTURE" || target.tagName === "CANVAS" || target.tagName === "VIDEO")) {
+      if (
+        target &&
+        (target.tagName === "IMG" ||
+          target.tagName === "PICTURE" ||
+          target.tagName === "CANVAS" ||
+          target.tagName === "VIDEO")
+      ) {
         event.preventDefault();
       }
     };
@@ -105,9 +108,7 @@ export default function Home() {
   }, []);
 
   if (isLoading) {
-    return (
-      <LoadingScreen onFirstInteraction={startMusicIfNeeded} />
-    );
+    return <LoadingScreen onFirstInteraction={startMusicIfNeeded} />;
   }
 
   if (showPasswordProtection && !isUnlocked) {
@@ -133,7 +134,7 @@ export default function Home() {
       </button>
 
       {hasOpenedInvitation && (
-        <div 
+        <div
           className="fixed inset-0 z-0"
           style={{
             backgroundImage: "url('/Remove_the_rest_202602151607.jpeg')",
@@ -157,9 +158,6 @@ export default function Home() {
         />
       ) : (
         <div className="relative z-10">
-          <CoupleStory />
-          <WeddingDetails />
-          <GallerySection />
           <PersonalMessage />
           <GrandClosing />
         </div>
