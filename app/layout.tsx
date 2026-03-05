@@ -35,7 +35,22 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} ${dancing.variable} font-sans antialiased`}
       >
-        {children}
+        <div className="relative min-h-screen">
+          {/* Subtle watermark overlay - deterrent only */}
+          <div className="pointer-events-none select-none fixed inset-0 z-0 flex items-center justify-center opacity-[0.04]">
+            <div className="font-calligraphy text-6xl md:text-8xl text-champagne-200 whitespace-nowrap">
+              Ayesha &amp; Umer Sandhu
+            </div>
+          </div>
+
+          <div className="relative z-10">
+            {children}
+          </div>
+
+          <footer className="relative z-10 py-4 text-center text-xs text-champagne-400/60">
+            © {new Date().getFullYear()} Ayesha &amp; Umer Sandhu. All rights reserved. Please do not copy or reuse this design.
+          </footer>
+        </div>
       </body>
     </html>
   );

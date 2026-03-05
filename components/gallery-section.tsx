@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
@@ -42,7 +42,6 @@ export const GallerySection = () => {
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isAutoplay, setIsAutoplay] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
     <section
@@ -96,7 +95,15 @@ export const GallerySection = () => {
           className="flex items-center justify-center gap-4"
         >
           <button
-            onClick={() => setIsAutoplay(!isAutoplay)}
+            onClick={() => {
+              setIsAutoplay((prev) => {
+                const next = !prev;
+                if (next && selectedImage === null) {
+                  setSelectedImage(0);
+                }
+                return next;
+              });
+            }}
             className={cn(
               "px-6 py-3 rounded-lg font-serif",
               "bg-navy-800/50 backdrop-blur-sm border border-champagne-500/20",
@@ -124,6 +131,7 @@ export const GallerySection = () => {
           <Lightbox
             images={galleryImages}
             initialIndex={selectedImage}
+            isAutoplay={isAutoplay}
             onClose={() => setSelectedImage(null)}
           />
         )}
@@ -135,11 +143,24 @@ export const GallerySection = () => {
 interface LightboxProps {
   images: typeof galleryImages;
   initialIndex: number;
+  isAutoplay: boolean;
   onClose: () => void;
 }
 
-const Lightbox = ({ images, initialIndex, onClose }: LightboxProps) => {
+const Lightbox = ({ images, initialIndex, isAutoplay, onClose }: LightboxProps) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+
+  useEffect(() => {
+    if (!isAutoplay) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isAutoplay, images.length]);
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));

@@ -40,6 +40,45 @@ export default function Home() {
     }
   }, [isMuted]);
 
+  // Global deterrents: block context menu & common copy/inspect shortcuts
+  useEffect(() => {
+    const handleContextMenu = (event: MouseEvent) => {
+      event.preventDefault();
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase();
+      const isMeta = event.metaKey || event.ctrlKey;
+
+      // Block common save / inspect / view-source shortcuts
+      const blockedCombos =
+        (isMeta && ["s", "p", "u", "c", "i", "j"].includes(key)) ||
+        key === "f12";
+
+      if (blockedCombos) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+
+    const handleDragStart = (event: DragEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target && (target.tagName === "IMG" || target.tagName === "PICTURE" || target.tagName === "CANVAS" || target.tagName === "VIDEO")) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("dragstart", handleDragStart);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("dragstart", handleDragStart);
+    };
+  }, []);
+
   const handleMusicToggle = () => {
     // First user interaction: start playing (browsers require a user gesture for audio)
     if (!hasPlayedRef.current && audioRef.current) {

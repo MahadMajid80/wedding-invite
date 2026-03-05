@@ -7,6 +7,18 @@
     @apply bg-navy-900 text-champagne-50;
     background: linear-gradient(135deg, #102a43 0%, #243b53 50%, #102a43 100%);
     min-height: 100vh;
+    /* Deterrent: prevent casual text selection */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  img,
+  picture,
+  video,
+  canvas {
+    /* Deterrent: make assets harder to drag/save directly */
+    -webkit-user-drag: none;
+    user-select: none;
   }
 }
 
