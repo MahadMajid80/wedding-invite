@@ -1,6 +1,9 @@
 "use client";
 
 import { CinematicOpening } from "@/components/cinematic-opening";
+import { CoupleStory } from "@/components/couple-story";
+import { WeddingDetails } from "@/components/wedding-details";
+import { GallerySection } from "@/components/gallery-section";
 import { PersonalMessage } from "@/components/personal-message";
 import { GrandClosing } from "@/components/grand-closing";
 import { LoadingScreen } from "@/components/loading-screen";
@@ -158,6 +161,9 @@ export default function Home() {
         />
       ) : (
         <div className="relative z-10">
+          <CoupleStory />
+          <WeddingDetails />
+          <GallerySection />
           <PersonalMessage />
           <GrandClosing />
         </div>
