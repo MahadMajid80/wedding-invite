@@ -2,9 +2,10 @@
 
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Clock, Users, Sparkles } from "lucide-react";
+import { Calendar, MapPin, Clock, Sparkles, ExternalLink } from "lucide-react";
 import { WEDDING_CONFIG } from "@/lib/constants";
 import { format } from "date-fns";
+import { CountdownTimer } from "./countdown-timer";
 import { VenueMap } from "./venue-map";
 
 export const WeddingDetails = () => {
@@ -19,7 +20,7 @@ export const WeddingDetails = () => {
       className="relative min-h-screen py-16 md:py-32 px-4 md:px-6 bg-transparent"
     >
       <div className="absolute inset-0 paper-texture opacity-5" />
-      
+
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,19 +36,11 @@ export const WeddingDetails = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="bg-navy-800/85 backdrop-blur-sm rounded-2xl p-6 md:p-8 luxury-shadow border border-champagne-500/20 mb-8 md:mb-12"
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mb-12 md:mb-16"
         >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="p-3 rounded-full bg-blush-500/20">
-              <Users className="w-6 h-6 text-blush-400" />
-            </div>
-            <h3 className="font-serif text-2xl text-champagne-300">Dress Code</h3>
-          </div>
-          <p className="font-serif text-xl text-champagne-200">
-            {WEDDING_CONFIG.dressCode}
-          </p>
+          <CountdownTimer targetDate={WEDDING_CONFIG.countdownDate} />
         </motion.div>
 
         <div className="space-y-16 md:space-y-24">
@@ -203,6 +196,17 @@ const EventSection = ({ event, index, inView }: EventSectionProps) => {
             {event.venue.name}
           </p>
           <p className="text-champagne-300/70">{event.venue.address}</p>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              `${event.venue.name}, ${event.venue.address}`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 font-serif text-sm text-champagne-400 hover:text-champagne-300 underline underline-offset-4 transition-colors"
+          >
+            <ExternalLink className="w-4 h-4 shrink-0" />
+            Open in Google Maps
+          </a>
         </motion.div>
 
         <motion.div

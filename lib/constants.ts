@@ -1,58 +1,33 @@
 export const WEDDING_CONFIG = {
   coupleNames: {
-    firstName: "Ayesha",
-    secondName: "Umer Sandhu",
+    firstName: "Nabeen Azan",
+    secondName: "Bisharat",
   },
+  /** Countdown target: 14 April 2026 (6:00 PM local) */
+  countdownDate: new Date("2026-04-14T18:00:00"),
   weddingDate: new Date("2024-12-15T18:00:00"),
   venue: {
-    name: "The Grand Ballroom",
-    address: "123 Luxury Avenue, City, Country",
+    name: "La Grande Banquet",
+    address:
+      "R4CG+9JQ, Nasir Colony Rd, Nasir Colony Sector 32 E Korangi, Karachi",
     coordinates: {
-      lat: 40.7128,
-      lng: -74.0060,
+      lat: 24.8219,
+      lng: 67.1276,
     },
   },
-  dressCode: "Black Tie Optional",
   events: [
     {
-      name: "Nikkah Ceremony",
-      date: new Date("2024-12-15T17:00:00"),
-      time: "5:00 PM",
-      description: "Wedding ceremony",
-      venue: {
-        name: "The Grand Ballroom",
-        address: "123 Luxury Avenue, City, Country",
-        coordinates: {
-          lat: 40.7128,
-          lng: -74.0060,
-        },
-      },
-    },
-    {
-      name: "Baraat",
-      date: new Date("2024-12-15T16:00:00"),
-      time: "4:00 PM",
-      description: "Groom's procession",
-      venue: {
-        name: "The Grand Ballroom",
-        address: "123 Luxury Avenue, City, Country",
-        coordinates: {
-          lat: 40.7128,
-          lng: -74.0060,
-        },
-      },
-    },
-    {
-      name: "Reception",
-      date: new Date("2024-12-15T19:00:00"),
-      time: "7:00 PM",
+      name: "Walima",
+      date: new Date("2026-04-14T21:00:00"),
+      time: "9:00 PM",
       description: "Dinner and celebration",
       venue: {
-        name: "The Grand Ballroom",
-        address: "123 Luxury Avenue, City, Country",
+        name: "La Grande Banquet",
+        address:
+          "R4CG+9JQ, Nasir Colony Rd, Nasir Colony Sector 32 E Korangi, Karachi",
         coordinates: {
-          lat: 40.7128,
-          lng: -74.0060,
+          lat: 24.8219,
+          lng: 67.1276,
         },
       },
     },

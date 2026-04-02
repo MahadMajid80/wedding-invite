@@ -1,9 +1,8 @@
 "use client";
 
 import { CinematicOpening } from "@/components/cinematic-opening";
-import { CoupleStory } from "@/components/couple-story";
+import { HeroBackgroundLayer } from "@/components/hero-background-layer";
 import { WeddingDetails } from "@/components/wedding-details";
-import { GallerySection } from "@/components/gallery-section";
 import { PersonalMessage } from "@/components/personal-message";
 import { GrandClosing } from "@/components/grand-closing";
 import { LoadingScreen } from "@/components/loading-screen";
@@ -138,17 +137,10 @@ export default function Home() {
 
       {hasOpenedInvitation && (
         <div
-          className="fixed inset-0 z-0"
-          style={{
-            backgroundImage: "url('/Remove_the_rest_202602151607.jpeg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundAttachment: "fixed",
-            backgroundRepeat: "no-repeat",
-            filter: "blur(5px)",
-          }}
+          className="pointer-events-none fixed inset-0 z-0"
+          aria-hidden
         >
-          <div className="absolute inset-0 bg-navy-900/75" />
+          <HeroBackgroundLayer />
         </div>
       )}
 
@@ -161,9 +153,7 @@ export default function Home() {
         />
       ) : (
         <div className="relative z-10">
-          <CoupleStory />
           <WeddingDetails />
-          <GallerySection />
           <PersonalMessage />
           <GrandClosing />
         </div>

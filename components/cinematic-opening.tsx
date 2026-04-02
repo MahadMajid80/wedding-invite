@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HeroBackgroundLayer } from "@/components/hero-background-layer";
 import { Sparkles } from "lucide-react";
 import { WEDDING_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -44,8 +45,8 @@ export const CinematicOpening = ({ onOpenInvitation }: CinematicOpeningProps) =>
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
-      <div className="absolute inset-0 paper-texture opacity-10 pointer-events-none" />
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-navy-900">
+      <HeroBackgroundLayer priority />
 
       <AnimatePresence mode="wait">
         {!isOpening ? (
@@ -55,32 +56,8 @@ export const CinematicOpening = ({ onOpenInvitation }: CinematicOpeningProps) =>
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-center px-6 max-w-4xl mx-auto"
+            className="mx-auto max-w-4xl px-6 pt-16 text-center md:pt-20"
           >
-            <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ 
-                delay: 0.6, 
-                duration: 1.4, 
-                ease: [0.16, 1, 0.3, 1]
-              }}
-              className="mb-12"
-            >
-              <div className="relative inline-block">
-                <div className="absolute inset-0 animate-pulse-glow rounded-full bg-champagne-500/30 blur-3xl" />
-                <div className="relative w-32 h-32 mx-auto rounded-full border-4 border-champagne-400/50 bg-gradient-to-br from-champagne-500/20 to-champagne-600/20 flex items-center justify-center luxury-shadow">
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="text-6xl font-calligraphy text-champagne-300"
-                  >
-                    ✉
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-
             <AnimatePresence mode="wait">
               {currentStep >= 1 && (
                 <motion.p
