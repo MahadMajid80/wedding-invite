@@ -3,6 +3,7 @@
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { Calendar, Sparkles } from "lucide-react";
+import { CountdownTimer } from "./countdown-timer";
 import { WEDDING_CONFIG } from "@/lib/constants";
 
 export const GrandClosing = () => {
@@ -54,9 +55,18 @@ export const GrandClosing = () => {
         </motion.div>
 
         <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mb-12"
+        >
+          <CountdownTimer targetDate={WEDDING_CONFIG.weddingDate} />
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
           className="flex flex-col items-center gap-6"
         >
           <button className="px-12 py-4 rounded-lg font-serif text-lg font-semibold bg-gradient-to-r from-champagne-500 to-champagne-600 text-navy-900 elegant-shadow hover:scale-105 transition-all duration-300 flex items-center gap-3 border-2 border-champagne-400/50 hover:border-champagne-300">

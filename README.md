@@ -101,8 +101,8 @@ pnpm dev
 Edit `lib/constants.ts`:
 ```typescript
 coupleNames: {
-  firstName: "Nabeen Azan",
-  secondName: "Bisharat",
+  firstName: "Ayesha",
+  secondName: "Zain",
 }
 ```
 

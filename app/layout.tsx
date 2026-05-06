@@ -21,9 +21,8 @@ const dancing = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Nabeen Azan & Bisharat - Wedding Invitation",
-  description:
-    "Together with their families, we invite you to celebrate our union",
+  title: "Ayesha & Umer Sandhu - Wedding Invitation",
+  description: "Together with their families, we invite you to celebrate our union",
 };
 
 export default function RootLayout({
@@ -36,21 +35,23 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} ${dancing.variable} font-sans antialiased`}
       >
-        <div className="relative flex min-h-screen flex-col">
+        <div className="relative min-h-screen">
           {/* Subtle watermark overlay - deterrent only */}
           <div className="pointer-events-none select-none fixed inset-0 z-0 flex items-center justify-center opacity-[0.04]">
             <div className="font-calligraphy text-6xl md:text-8xl text-champagne-200 whitespace-nowrap">
-              Nabeen Azan &amp; Bisharat
+              Ayesha &amp; Umer Sandhu
             </div>
           </div>
 
-          <div className="relative z-10 flex-1">{children}</div>
+          <div className="relative z-10">
+            {children}
+          </div>
 
           <footer className="relative z-10 mt-auto border-t border-champagne-500/10 bg-gradient-to-t from-navy-900/80 to-transparent px-4 py-10 text-center">
             <div className="mx-auto flex max-w-md flex-col items-center gap-4">
               <div className="h-px w-24 bg-gradient-to-r from-transparent via-champagne-500/60 to-transparent" />
               <p className="font-serif text-[10px] uppercase tracking-[0.35em] text-champagne-400/55">
-                Created by
+                Crafted by
               </p>
               <p className="font-calligraphy text-2xl text-gradient md:text-3xl">
                 The Aura Invites
@@ -63,3 +64,4 @@ export default function RootLayout({
     </html>
   );
 }
+
