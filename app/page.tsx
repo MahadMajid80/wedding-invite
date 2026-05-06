@@ -9,6 +9,7 @@ import { GrandClosing } from "@/components/grand-closing";
 import { LoadingScreen } from "@/components/loading-screen";
 import { PasswordProtection } from "@/components/password-protection";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Volume2, VolumeX } from "lucide-react";
 
 export default function Home() {
@@ -133,17 +134,16 @@ export default function Home() {
       </button>
 
       {hasOpenedInvitation && (
-        <div 
-          className="fixed inset-0 z-0"
-          style={{
-            backgroundImage: "url('/Remove_the_rest_202602151607.jpeg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundAttachment: "fixed",
-            backgroundRepeat: "no-repeat",
-            filter: "blur(5px)",
-          }}
-        >
+        <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden>
+          <Image
+            src="/hero-background.jpeg"
+            alt=""
+            fill
+            className="scale-110 object-cover object-[44%_36%] blur-lg"
+            priority
+            unoptimized
+            sizes="100vw"
+          />
           <div className="absolute inset-0 bg-navy-900/75" />
         </div>
       )}

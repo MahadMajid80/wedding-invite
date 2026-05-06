@@ -92,6 +92,7 @@ const StoryChapter = ({ chapter, index, isEven }: StoryChapterProps) => {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
             priority={index === 0}
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
         </div>

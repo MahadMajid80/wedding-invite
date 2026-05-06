@@ -79,6 +79,7 @@ export const GallerySection = () => {
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
+                unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-champagne-100 opacity-0 group-hover:opacity-100 transition-opacity z-20">
@@ -199,6 +200,7 @@ const Lightbox = ({ images, initialIndex, isAutoplay, onClose }: LightboxProps) 
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 80vw"
+            unoptimized
           />
           <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-navy-900/90 to-transparent">
             <p className="font-serif text-xl text-champagne-100">
