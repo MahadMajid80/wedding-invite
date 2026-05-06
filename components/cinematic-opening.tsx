@@ -75,34 +75,6 @@ export const CinematicOpening = ({
             transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-center px-6 max-w-4xl mx-auto"
           >
-            <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                delay: 0.6,
-                duration: 1.4,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="mb-12"
-            >
-              <div className="relative inline-block">
-                <div className="absolute inset-0 animate-pulse-glow rounded-full bg-champagne-500/30 blur-3xl" />
-                <div className="relative w-32 h-32 mx-auto rounded-full border-4 border-champagne-400/50 bg-gradient-to-br from-champagne-500/20 to-champagne-600/20 flex items-center justify-center luxury-shadow">
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{
-                      duration: 30,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className="text-6xl font-calligraphy text-champagne-300"
-                  >
-                    ✉
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-
             <AnimatePresence mode="wait">
               {currentStep >= 1 && (
                 <motion.p
