@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { WEDDING_CONFIG } from "@/lib/constants";
+import { encodeStaticAssetPath } from "@/lib/helpers/encode-static-asset-path";
 import { cn } from "@/lib/utils";
 
 interface CinematicOpeningProps {
   onOpenInvitation: () => void;
 }
+
+const INTRO_BACKGROUND_VIDEO = encodeStaticAssetPath(
+  "/Can I have iweddingplanning .mp4",
+);
 
 export const CinematicOpening = ({
   onOpenInvitation,
@@ -47,6 +52,17 @@ export const CinematicOpening = ({
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
+      <video
+        className="absolute inset-0 h-full w-full object-cover object-[44%_36%] pointer-events-none"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+      >
+        <source src={INTRO_BACKGROUND_VIDEO} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-navy-900/60 pointer-events-none" />
       <div className="absolute inset-0 paper-texture opacity-10 pointer-events-none" />
 
       <AnimatePresence mode="wait">
